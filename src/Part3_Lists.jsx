@@ -66,11 +66,10 @@ function SectionA() {
      <ul> 
         {
           players.filter((key) => 
-            key.score > 30).map((key1) => (
-              <li key="key1">name: {key1.name}</li>
+            key.score > 30).map((key) => (
+              <li key={key.id}>name: {key.name}</li>
             ))
-            }
-              
+          }
       </ul>
     </div>
   );
@@ -91,24 +90,41 @@ function SectionA() {
 //
 // Write PlayerRow here:
 
+function PlayerRow(props){
+
+  return(
+    <div>
+      {
+       <p>Name: {props.name}, Score: {props.score}</p>         
+      }
+    </div>
+)
+}
+
 function SectionB() {
   // B2.
   // Use .map() to render a PlayerRow for each player in the array.
   // Pass the player's name and score as props to each one.
   // Each PlayerRow still needs a key — put it on the PlayerRow itself.
   //
+
   // Notice how this is cleaner than writing out each player by hand,
   // and reuses the same component structure for every item.
   //
   // EXPLAIN: What is the advantage of rendering a component inside .map()
   //          compared to mapping to a plain HTML element like <li>?
-  //
-  //          answer:
+  //          
+  //          answer: Because I can set my own keys and returns and only have to do it once for each set I want?
 
   return (
     <div>
       <h2>Section B — Lists and Components</h2>
       {/* B2: map PlayerRow components here */}
+      {
+        players.map((key) => (
+          PlayerRow(key)
+        ))
+      }
     </div>
   );
 }
