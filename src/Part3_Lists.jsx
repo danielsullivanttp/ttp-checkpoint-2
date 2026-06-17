@@ -46,7 +46,7 @@ function SectionA() {
   // EXPLAIN: Why does React require a key prop on each list item?
   //          What happens if two items share the same key?
   //
-  //          answer:
+  //          answer:   
 
   return (
     <div>
@@ -54,21 +54,23 @@ function SectionA() {
       <h3>All Players</h3>
       <ul>
         {/* A1: map players here: */}
-        {players.map((key) => (
-          <li>
-            Name: {key.name}, Score: {key.score}
-          </li>
-        ))}
+        {
+          players.map((key) => (
+            <li key1="key">Name: {key.name}, Score: {key.score}</li>
+        ))
+        }
       </ul>
 
       {/* A2: filtered list goes here: */}
-      <h3>Score above 30:</h3>
-      <ul>
-          {players.map((key) => (
-          <li>
-            Name: {key.name}, Score: {key.score}
-          </li>
-        ))}
+      <h3>Score above 30:</h3>     
+     <ul> 
+        {
+          players.filter((key) => 
+            key.score > 30).map((key1) => (
+              <li key="key1">name: {key1.name}</li>
+            ))
+            }
+              
       </ul>
     </div>
   );
