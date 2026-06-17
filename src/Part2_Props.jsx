@@ -11,7 +11,6 @@
 //   - For EXPLAIN tasks, write your answer as a comment below the prompt
 // ============================================================
 
-
 // ------------------------------------------------------------
 // SECTION A — Passing and Receiving Props
 //
@@ -25,13 +24,13 @@
 // The StudentBadge component below is hardcoded — it always shows the same text.
 // we will update this soon.
 
-function StudentBadge() {
+function StudentBadge(props) {
   return (
     <div>
-      <h3>Student Name</h3>
-      <p>Grade: 0</p>
+      <h3>{props.name}</h3>
+      <p>{props.grade}</p>
     </div>
-  )
+  );
 }
 
 function SectionA() {
@@ -55,6 +54,14 @@ function SectionA() {
   // Create a new component called TeacherCard from scratch.
   // It should accept props and display a teacher's name and the subject they teach.
   // Render it once below your badges with real values passed in.
+  function TeacherCard(props) {
+    return (
+      <div>
+        <h1>Teachers Name: {props.name}</h1>
+        <p>Subject Taught: {props.subject}</p>
+      </div>
+    );
+  }
   //
   // This shows that props work the same way on any component you build.
   //
@@ -67,15 +74,19 @@ function SectionA() {
   return (
     <div>
       <h2>Section A — Props</h2>
-      <StudentBadge />
+      <StudentBadge name="John Smith" grade="95" />
       {/* A1 + A2: Render two more StudentBadge components here */}
-
+      <StudentBadge name="Jane Doe" grade="98" />
+      <StudentBadge name="Danny Sullivan" grade="100" />
+      <br />
       {/* A3: Render your TeacherCard here */}
-
+      <TeacherCard
+        name="Mr. Gillespie"
+        subject="High School English"
+      ></TeacherCard>
     </div>
-  )
+  );
 }
-
 
 // ------------------------------------------------------------
 // SECTION B — Props with Different Data Types
@@ -99,8 +110,17 @@ function SectionA() {
 //       then embed that variable in your JSX.
 //
 // Write PlayerCard here:
+function PlayerCard(props) {
+  let status = props.isActive ? "Active" : "Inactive";
 
-
+  return (
+    <div>
+      <h1>Player Name: {props.name}</h1>
+      <p>Score: {props.score}</p>
+      <p>Active Status: {status}</p>
+    </div>
+  );
+}
 
 function SectionB() {
   // B2.
@@ -112,11 +132,16 @@ function SectionB() {
     <div>
       <h2>Section B — Props with Different Types</h2>
       {/* Render your PlayerCard components here */}
-
+      <PlayerCard name="Renaldo" score={10000} isActive={true}></PlayerCard>
+      <PlayerCard name="Pelle" score={15000} isActive={false}></PlayerCard>
+      <PlayerCard
+        name="Danny Sullivan"
+        score={350000}
+        isActive={true}
+      ></PlayerCard>
     </div>
-  )
+  );
 }
-
 
 // ------------------------------------------------------------
 // Do not edit below this line.
@@ -131,7 +156,7 @@ function Part2() {
       <hr />
       <SectionB />
     </section>
-  )
+  );
 }
 
-export default Part2
+export default Part2;

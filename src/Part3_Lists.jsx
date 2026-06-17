@@ -11,7 +11,6 @@
 //   - For EXPLAIN tasks, write your answer as a comment below the prompt
 // ============================================================
 
-
 // ------------------------------------------------------------
 // SECTION A — Rendering a List from an Array
 //
@@ -23,12 +22,12 @@
 
 // The following array is provided. Do not change it.
 const players = [
-  { id: 1, name: "LeBron",  score: 42 },
-  { id: 2, name: "Curry",   score: 31 },
-  { id: 3, name: "Messi",   score: 55 },
-  { id: 4, name: "Serena",  score: 18 },
-  { id: 5, name: "Brady",   score: 67 },
-]
+  { id: 1, name: "LeBron", score: 42 },
+  { id: 2, name: "Curry", score: 31 },
+  { id: 3, name: "Messi", score: 55 },
+  { id: 4, name: "Serena", score: 18 },
+  { id: 5, name: "Brady", score: 67 },
+];
 
 function SectionA() {
   // A1.
@@ -55,15 +54,25 @@ function SectionA() {
       <h3>All Players</h3>
       <ul>
         {/* A1: map players here: */}
-
+        {players.map((key) => (
+          <li>
+            Name: {key.name}, Score: {key.score}
+          </li>
+        ))}
       </ul>
 
       {/* A2: filtered list goes here: */}
-
+      <h3>Score above 30:</h3>
+      <ul>
+          {players.map((key) => (
+          <li>
+            Name: {key.name}, Score: {key.score}
+          </li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
-
 
 // ------------------------------------------------------------
 // SECTION B — Lists and Components
@@ -79,8 +88,6 @@ function SectionA() {
 // It should accept props and display a player's name and score inside a <div>.
 //
 // Write PlayerRow here:
-
-
 
 function SectionB() {
   // B2.
@@ -100,11 +107,9 @@ function SectionB() {
     <div>
       <h2>Section B — Lists and Components</h2>
       {/* B2: map PlayerRow components here */}
-
     </div>
-  )
+  );
 }
-
 
 // ------------------------------------------------------------
 // Do not edit below this line.
@@ -119,7 +124,7 @@ function Part3() {
       <hr />
       <SectionB />
     </section>
-  )
+  );
 }
 
-export default Part3
+export default Part3;
