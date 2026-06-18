@@ -50,8 +50,17 @@ function Counter() {
   // Why: useState gives you two things — the current value, and a function
   //      to update it. When you call the update function, React re-renders
   //      the component and shows the new value on the page.
+const [count, counter] = useState(0)
 
-  // A2.
+function addToggle() {
+  counter(count + 1)
+}
+
+function resetToggle() {
+  counter(0)
+}
+
+// A2.
   // Add a button that says "Add 1".
   // When clicked, it should increase count by 1.
 
@@ -64,11 +73,11 @@ function Counter() {
   return (
     <div>
       {/* A1: remove the hardcoded 0 with the state */}
-      <h3>Count: 0</h3>
+      <h3>{count}</h3>
       {/* A2: Add 1 button */}
-
+      <button onClick={() => addToggle() }>Add 1</button>
       {/* A3: Reset button */}
-
+      <button onClick={() => resetToggle() }>Reset</button>
     </div>
   )
 }
@@ -78,8 +87,9 @@ function SectionA() {
   //          How is a state variable different from a regular variable?
   //          What happens on the page when you call the updater function?
   //
-  //          answer:
-
+  //          answer:  What is state? Data components remember
+  //                   How is a state variable different from a regular variable? events update states
+  //                   What happens on the page when you call the updater function? React rerenders it automatically                               
   return (
     <div>
       <h2>Section A — useState</h2>
@@ -104,7 +114,7 @@ function MoodPicker() {
   // B1.
   // Declare a state variable called mood with an initial value of your choice
   // (a string, like "neutral").
-
+const [mood, currentMood] = useState('Neutral')
   // B2.
   // Add three buttons: "Happy", "Sad", and "Excited".
   // Each button needs its own click handler that sets mood to that
@@ -112,6 +122,18 @@ function MoodPicker() {
   //
   // Why: All three buttons update the same state variable, just with
   //      a different value each time.
+function happy(){
+  currentMood('Happy')
+}
+
+function sad(){
+  currentMood('Sad')
+}
+
+function excited(){
+  
+  currentMood('Excited')
+}
 
   // B3.
   // Below the buttons, display a sentence that includes the current mood,
@@ -122,14 +144,16 @@ function MoodPicker() {
   // EXPLAIN: How can three different buttons all update the same state variable?
   //          What is actually different between this component and Counter?
   //
-  //          answer:
+  //          answer: because all of the buttons use the same useState setter for the same useState variable 
 
   return (
     <div>
       {/* B2: three buttons go here */}
-
+      <button onClick={() => happy()}>Happy</button>
+      <button onClick={() => sad()}>Sad</button>
+      <button onClick={() => excited()}>Excited</button>
       {/* B3: mood display goes here */}
-
+      <p>Current mood: {mood}</p>
     </div>
   )
 }
